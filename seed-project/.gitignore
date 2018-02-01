@@ -3,3 +3,9 @@
 /typings
 /public/js/
 npm-debug.log
+
+# eclipse
+.project
+.settings/
+.jshintrc
+.npmignore
