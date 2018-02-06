@@ -1,6 +1,7 @@
 
 import { Component } from "@angular/core";
-
+import { MessageService } from "./message.service";
+import { Message } from "./message.model";
 
 @Component({
   selector: 'app-message-input',
@@ -9,8 +10,12 @@ import { Component } from "@angular/core";
 
 
 export class MessageInputComponent{
+  constructor(private messageSerivce : MessageService) {
+    
+  }
   
-  onSave(inputVal : string) {
-    console.log(inputVal)
+  onSave(val : string) {
+    const message = new Message(val, 'Chris');
+    this.messageSerivce.addMessage(message);
   }
 }

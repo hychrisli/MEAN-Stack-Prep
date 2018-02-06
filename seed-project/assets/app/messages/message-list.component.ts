@@ -2,8 +2,9 @@
  * New typescript file
  */
 
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Message } from "./message.model";
+import { MessageService } from "./message.service";
 
 @Component({
   selector: 'app-message-list',
@@ -17,10 +18,13 @@ import { Message } from "./message.model";
   `
 })
   
-export class MessageListComponent{
-      messages: Message[] = [
-      new Message ('some message', 'Chris'),
-      new Message ('another message', 'Chris'),
-      new Message ('3rd message', 'Chris')
-    ]
+export class MessageListComponent implements OnInit {
+  messages: Message[];
+  
+  constructor(private messageService:MessageService) {}
+  
+  ngOnInit(): void {
+    this.messages = this.messageService.getMessage();
+  }
+  
 }
